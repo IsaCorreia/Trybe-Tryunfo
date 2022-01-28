@@ -1,39 +1,17 @@
 import React from 'react';
+import Input from './Input';
 
 class Form extends React.Component {
   render() {
     return (
       <form>
-        <label htmlFor="name-input">
-          Nome da Carta
-          <input type="text" id="name-input" data-testid="name-input" />
-        </label>
-
-        <label htmlFor="description-input">
-          Descrição
-          <input type="textarea" id="description-input" data-testid="description-input" />
-        </label>
-
-        <label htmlFor="attr1-input">
-          Atributo 1
-          <input type="number" id="attr1-input" data-testid="attr1-input" />
-        </label>
-
-        <label htmlFor="attr2-input">
-          Atributo 2
-          <input type="number" id="attr2-input" data-testid="attr2-input" />
-        </label>
-
-        <label htmlFor="attr3-input">
-          Atributo 3
-          <input type="number" id="attr3-input" data-testid="attr3-input" />
-        </label>
-
-        <label htmlFor="image-input">
-          Imagem
-          <input type="text" id="image-input" data-testid="image-input" />
-        </label>
-
+        {/* <Input id="" type="" labelDesc=""/> */}
+        <Input id="name-input" type="text" labelDesc="Nome da Carta"/>
+        <Input id="description-input" type="textarea" labelDesc="Descrição"/>
+        <Input id="attr1-input" type="number" labelDesc="Atributo 1"/>
+        <Input id="attr2-input" type="number" labelDesc="Atributo 2"/>
+        <Input id="attr3-input" type="number" labelDesc="Atributo 3"/>
+        <Input id="image-input" type="text" labelDesc="Imagem"/>
         <label htmlFor="rare-input">
           Raridade
           <select id="rare-input" data-testid="rare-input">
@@ -43,10 +21,7 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="trunfo-input">
-          <input type="checkbox" id="trunfo-input" data-testid="trunfo-input" />
-          Super Trunfo
-        </label>
+        <Input id="trunfo-input" type="checkbox" labelDesc="Super Trunfo"/>
 
         <button type="button" data-testid="save-button">Salvar</button>
 
