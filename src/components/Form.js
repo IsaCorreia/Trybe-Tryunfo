@@ -1,47 +1,54 @@
 import React from 'react';
 
 class Form extends React.Component {
-  render () {
+  render() {
     return (
       <form>
-        <label>Nome da Carta
-          <input type="text" data-testid="name-input" />
+        <label htmlFor="name-input">
+          Nome da Carta
+          <input type="text" id="name-input" data-testid="name-input" />
         </label>
 
-        <label>Descrição
-          <input type="textarea" data-testid="description-input" />
+        <label htmlFor="description-input">
+          Descrição
+          <input type="textarea" id="description-input" data-testid="description-input" />
         </label>
 
-        <label>Atributo 1
-          <input type="number" data-testid="attr1-input" />
+        <label htmlFor="attr1-input">
+          Atributo 1
+          <input type="number" id="attr1-input" data-testid="attr1-input" />
         </label>
 
-        <label>Atributo 2
-          <input type="number" data-testid="attr2-input" />
+        <label htmlFor="attr2-input">
+          Atributo 2
+          <input type="number" id="attr2-input" data-testid="attr2-input" />
         </label>
 
-        <label>Atributo 3
-          <input type="number" data-testid="attr3-input" />
+        <label htmlFor="attr3-input">
+          Atributo 3
+          <input type="number" id="attr3-input" data-testid="attr3-input" />
         </label>
 
-        <label>Imagem
-          <input type="text" data-testid="image-input" />
+        <label htmlFor="image-input">
+          Imagem
+          <input type="text" id="image-input" data-testid="image-input" />
         </label>
 
-        <label>Raridade
-          <select data-testid="rare-input"> 
+        <label htmlFor="rare-input">
+          Raridade
+          <select id="rare-input" data-testid="rare-input">
             <option>normal</option>
             <option>raro</option>
             <option>muito raro</option>
           </select>
         </label>
 
-        <label>
-          <input type="checkbox" data-testid="trunfo-input" />
+        <label htmlFor="trunfo-input">
+          <input type="checkbox" id="trunfo-input" data-testid="trunfo-input" />
           Super Trunfo
         </label>
 
-        <button data-testid="save-button">Salvar</button>
+        <button type="button" data-testid="save-button">Salvar</button>
 
       </form>
     );
