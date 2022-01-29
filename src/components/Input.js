@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class Input extends React.Component {
   render() {
@@ -7,12 +8,22 @@ class Input extends React.Component {
       <>
         <label htmlFor={ id }>
           { labelDesc }
-          <input type={ type } id={ id } data-testid={ id } />
+          <input
+            type={ type }
+            id={ id }
+            data-testid={ id }
+          />
         </label>
-        <br/>
+        <br />
       </>
     );
   }
+}
+
+Input.propTypes = {
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  labelDesc: PropTypes.string.isRequired,
 }
 
 export default Input;
