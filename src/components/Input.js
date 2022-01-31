@@ -3,19 +3,20 @@ import PropTypes from 'prop-types';
 
 class Input extends React.Component {
   render() {
-    const { id, type, labelDesc } = this.props;
+    const { id, type, labelDesc, func } = this.props;
     return (
-      <>
+      <div className="inputs">
         <label htmlFor={ id }>
           { labelDesc }
+
           <input
             type={ type }
             id={ id }
             data-testid={ id }
+            onChange={func}
           />
         </label>
-        <br />
-      </>
+      </div>
     );
   }
 }

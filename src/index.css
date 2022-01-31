@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.form {
+  margin: auto;
+  display: flex;
+  flex-flow: column wrap;
+  width: 70%;
+  align-content: center;
+  background-color: rgb(185, 185, 185);
+}
+
+.inputs {
+  text-align: center;
+  flex-direction: row;
+  margin: 5px;
+}
+
+.inputs > * {
+  margin: 0 20px;
+  /* border: red solid 1px; */
+}
+
+.inputs > * > * {
+  margin-left: 20px;
+  /* border: blue solid 1px; */
+}
