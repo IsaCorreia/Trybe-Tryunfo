@@ -12,7 +12,9 @@ import Input from './Input';
 // data-testid="save-button"
 
 class Form extends React.Component {
-  onInputChange = (event) => this.setState({ [event.target.id]: event.target.value });
+  // onInputChange = (event) => {
+  //   console.log(event.target);
+  // };
 
   render() {
     const {
@@ -26,8 +28,8 @@ class Form extends React.Component {
       cardTrunfo, // 'boolean'
       // hasTrunfo, // 'boolean'
       isSaveButtonDisabled, // 'boolean'
-      // onInputChange, // 'callback'
-      // onSaveButtonClick, // 'callback',
+      onInputChange, // 'callback'
+      onSaveButtonClick, // 'callback'
     } = this.props;
 
     return (
@@ -40,48 +42,47 @@ class Form extends React.Component {
               type="text"
               id="name-input"
               data-testid="name-input"
-              onChange={ this.onInputChange }
-              value={ cardName.value }
+              onChange={ onInputChange }
+              value={ cardName }
             />
           </label>
         </div>
 
-        {/* temporariamente escondido */}
         <div>
           <Input
             labelDesc="Descrição"
             id="description-input"
             type="textarea"
-            value={ cardDescription.value }
-            func={ this.onInputChange }
+            value={ cardDescription }
+            func={ onInputChange }
           />
           <Input
             id="attr1-input"
             type="number"
             labelDesc="Atributo 1"
-            value={ cardAttr1.value }
-            func={ this.onInputChange }
+            value={ cardAttr1 }
+            func={ onInputChange }
           />
           <Input
             labelDesc="Atributo 2"
             id="attr2-input"
             type="number"
-            value={ cardAttr2.value }
-            func={ this.onInputChange }
+            value={ cardAttr2 }
+            func={ onInputChange }
           />
           <Input
             labelDesc="Atributo 3"
             id="attr3-input"
             type="number"
-            value={ cardAttr3.value }
-            func={ this.onInputChange }
+            value={ cardAttr3 }
+            func={ onInputChange }
           />
           <Input
             labelDesc="Imagem"
             id="image-input"
             type="text"
-            value={ cardImage.value }
-            func={ this.onInputChange }
+            value={ cardImage }
+            func={ onInputChange }
           />
         </div>
 
@@ -91,8 +92,8 @@ class Form extends React.Component {
             id="rare-input"
             data-testid="rare-input"
             type="select"
-            value={ cardRare.value }
-            onChange={ this.onInputChange }
+            value={ cardRare }
+            onChange={ onInputChange }
           >
             <option>normal</option>
             <option>raro</option>
@@ -100,20 +101,23 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <Input
-          labelDesc="Super Trunfo"
-          id="trunfo-input"
-          type="checkbox"
-          value={ cardTrunfo.value }
-          func={ this.onInputChange }
-        />
+        <label htmlFor="trunfo-input">
+          Super Trunfo
+          <input
+            type="checkbox"
+            id="trunfo-input"
+            data-testid="trunfo-input"
+            onChange={ onInputChange }
+            checked={ cardTrunfo }
+          />
+        </label>
 
         <button
           type="button"
           data-testid="save-button"
           className="inputs"
           disabled={ isSaveButtonDisabled }
-          onClick={ this.onSaveButtonClick }
+          onClick={ onSaveButtonClick }
         >
           Salvar
         </button>
@@ -134,8 +138,8 @@ Form.propTypes = {
   cardTrunfo: PropTypes.bool.isRequired,
   // hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
-  // onInputChange: PropTypes.func.isRequired,
-  // onSaveButtonClick: PropTypes.func.isRequired,
+  onInputChange: PropTypes.func.isRequired,
+  onSaveButtonClick: PropTypes.func.isRequired,
 };
 
 export default Form;
