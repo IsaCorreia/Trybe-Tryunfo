@@ -99,7 +99,8 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        <Card { ...this.state } />
+        { this.state.cardName ? <Card { ...this.state } /> : null}
+        <h1>Seu baralho:</h1>
       </div>
     );
   }
