@@ -91,6 +91,7 @@ class App extends React.Component {
   }
 
   render() {
+    const { cardName } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -99,7 +100,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        { this.state.cardName ? <Card { ...this.state } /> : null}
+        { cardName ? <Card { ...this.state } /> : null}
         <h1>Seu baralho:</h1>
       </div>
     );
