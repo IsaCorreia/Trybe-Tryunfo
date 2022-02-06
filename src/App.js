@@ -20,7 +20,7 @@ class App extends React.Component {
       cardRare: '', // 'string'
       cardTrunfo: false, // 'boolean'
       // hasTrunfo, // 'boolean'
-      isSaveButtonDisabled: false, // 'boolean'
+      isSaveButtonDisabled: true, // 'boolean'
     };
   }
 
@@ -28,11 +28,13 @@ class App extends React.Component {
     this.setState({ [event.target.id]: event.target.value });
     this.isFormFilled();
   };
+  
+  componentDidUpdate() {
+  }
 
   onSaveButtonClick = () => { console.log('onSaveButtonClick'); };
 
   isFormFilled = () => {
-    const MAX_NUMBER_FOR_ATTR = 90;
     const {
       cardName,
       cardDescription,
@@ -41,16 +43,21 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
     } = this.state;
+    const MAX_NUMBER_FOR_ATTR = 90;
+    const MAX_NUMBER_FOR_ATTR_SUM = 210;
+    const cardAttrSumValue = Number(cardAttr1) + Number(cardAttr2) + Number(cardAttr3);
     const states = {
       cardName: cardName.length > 0 || false,
       cardDescription: cardDescription.length > 0 || false,
-      cardAttr1: (cardAttr1 > 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
-      cardAttr3: (cardAttr3 > 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
-      cardAttr2: (cardAttr2 > 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
+      cardAttr1: (cardAttr1 >= 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
+      cardAttr3: (cardAttr3 >= 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
+      cardAttr2: (cardAttr2 >= 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
+      cardAttrSum: cardAttrSumValue <= MAX_NUMBER_FOR_ATTR_SUM || false,
       cardImage: cardImage.length > 0 || false,
     };
     const statesBool = Object.values(states).every((item) => item === true);
-    this.setState({ isSaveButtonDisabled: statesBool });
+    // console.log(`valor final: ${statesBool}`);
+    this.setState({ isSaveButtonDisabled: !statesBool });
   }
 
   render() {
