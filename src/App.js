@@ -17,10 +17,11 @@ class App extends React.Component {
       cardAttr2: '', // 'string'
       cardAttr3: '', // 'string'
       cardImage: '', // 'string'
-      cardRare: '', // 'string'
+      cardRare: 'normal', // 'string'
       cardTrunfo: false, // 'boolean'
       // hasTrunfo, // 'boolean'
       isSaveButtonDisabled: true, // 'boolean'
+      savedCards: [],
     };
   }
 
@@ -29,7 +30,40 @@ class App extends React.Component {
     this.isFormFilled();
   };
 
-  onSaveButtonClick = () => { console.log('onSaveButtonClick'); };
+  onSaveButtonClick = () => {
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // hasTrunfo,
+      isSaveButtonDisabled,
+      savedCards,
+    } = this.state;
+
+    const newCard = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      // hasTrunfo,
+      isSaveButtonDisabled,
+    };
+    savedCards.push(newCard);
+
+    // Salva nova varta no estado
+    this.setState({
+      savedCards,
+    });
+  };
 
   isFormFilled = () => {
     const {
@@ -53,7 +87,6 @@ class App extends React.Component {
       cardImage: cardImage.length > 0 || false,
     };
     const statesBool = Object.values(states).every((item) => item === true);
-    // console.log(`valor final: ${statesBool}`);
     this.setState({ isSaveButtonDisabled: !statesBool });
   }
 
@@ -65,7 +98,6 @@ class App extends React.Component {
           { ...this.state }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
-          // isFormFilled={ this.isFormFilled }
         />
         <Card { ...this.state } />
       </div>
