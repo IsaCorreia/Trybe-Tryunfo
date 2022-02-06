@@ -28,9 +28,6 @@ class App extends React.Component {
     this.setState({ [event.target.id]: event.target.value });
     this.isFormFilled();
   };
-  
-  componentDidUpdate() {
-  }
 
   onSaveButtonClick = () => { console.log('onSaveButtonClick'); };
 
