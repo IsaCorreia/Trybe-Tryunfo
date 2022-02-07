@@ -92,11 +92,8 @@ class App extends React.Component {
   }
 
   renderSavedCards = () => {
-    console.log('hi');
     const { savedCards } = this.state;
-    return savedCards.map((item, i) => {
-     return <Card key={i} { ...item } />
-    });
+    return savedCards.map((item, i) => <Card key={ i } { ...item } />);
   }
 
   render() {
