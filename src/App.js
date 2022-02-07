@@ -27,7 +27,8 @@ class App extends React.Component {
   }
 
   onInputChange = (event) => {
-    this.setState({ [event.target.id]: event.target.value }, () => {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    this.setState({ [event.target.id]: value }, () => {
       this.isFormFilled();
     });
   };
