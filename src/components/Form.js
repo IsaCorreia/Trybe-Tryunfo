@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Input from './Input';
+import Checkbox from './Checkbox';
 
 class Form extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class Form extends React.Component {
       cardImage, // 'string'
       cardRare, // 'string'
       cardTrunfo, // 'boolean'
-      // hasTrunfo, // 'boolean'
+      hasTrunfo, // 'boolean'
       isSaveButtonDisabled, // boolean
       onInputChange,
       onSaveButtonClick,
@@ -85,16 +86,15 @@ class Form extends React.Component {
           </select>
         </label>
 
-        <label htmlFor="cardTrunfo">
-          Super Trunfo
-          <input
-            data-testid="trunfo-input"
+        { hasTrunfo
+          ? <p>Você já tem um Super Trunfo em seu baralho</p>
+          : <Checkbox
+            testid="trunfo-input"
             id="cardTrunfo"
             type="checkbox"
             checked={ cardTrunfo }
             onChange={ onInputChange }
-          />
-        </label>
+          />}
 
         <button
           data-testid="save-button"
@@ -119,7 +119,7 @@ Form.propTypes = {
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
   cardTrunfo: PropTypes.bool.isRequired,
-  // hasTrunfo: PropTypes.bool.isRequired,
+  hasTrunfo: PropTypes.bool.isRequired,
   isSaveButtonDisabled: PropTypes.bool.isRequired,
   onInputChange: PropTypes.func.isRequired,
   onSaveButtonClick: PropTypes.func.isRequired,

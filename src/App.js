@@ -10,6 +10,7 @@ class App extends React.Component {
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.isFormFilled = this.isFormFilled.bind(this);
     this.renderSavedCards = this.renderSavedCards.bind(this);
+    this.checksTrunfo = this.checksTrunfo.bind(this);
 
     this.state = {
       cardName: '', // 'string'
@@ -20,7 +21,7 @@ class App extends React.Component {
       cardImage: '', // 'string'
       cardRare: 'normal', // 'string'
       cardTrunfo: false, // 'boolean'
-      // hasTrunfo, // 'boolean'
+      hasTrunfo: false, // 'boolean'
       isSaveButtonDisabled: true, // 'boolean'
       savedCards: [],
     };
@@ -28,11 +29,18 @@ class App extends React.Component {
 
   onInputChange = (event) => {
     const { target } = event;
-    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const value = target.type === 'checkbox'
+      ? target.checked
+      : target.value;
     this.setState({ [target.id]: value }, () => {
       this.isFormFilled();
     });
   };
+
+  checksTrunfo = () => {
+    const { cardTrunfo } = this.state;
+    return cardTrunfo;
+  }
 
   onSaveButtonClick = () => {
     const {
@@ -59,7 +67,7 @@ class App extends React.Component {
     };
     savedCards.push(newCard);
 
-    // Salva nova varta no estado
+    // Salva nova carta no estado
     this.setState({
       savedCards,
       cardName: '', // 'string'
@@ -70,6 +78,7 @@ class App extends React.Component {
       cardImage: '', // 'string'
       cardRare: 'normal', // 'string'
       cardTrunfo: false, // 'boolean'
+      hasTrunfo: this.checksTrunfo(),
     });
   };
 
@@ -100,7 +109,7 @@ class App extends React.Component {
 
   renderSavedCards = () => {
     const { savedCards } = this.state;
-    return savedCards.map((item, i) => <Card key={ i } { ...item } />);
+    return savedCards.map((item, index) => <Card key={ index } { ...item } />);
   }
 
   render() {
@@ -112,10 +121,13 @@ class App extends React.Component {
           { ...this.state }
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
+          checksTrunfo={ this.checksTrunfo }
         />
         <Card { ...this.state } />
         <h1>Seu baralho:</h1>
-        { savedCards.length > 0 ? this.renderSavedCards() : undefined }
+        <div id="saved-cards">
+          { savedCards.length > 0 ? this.renderSavedCards() : undefined }
+        </div>
       </div>
     );
   }
