@@ -9,6 +9,7 @@ class App extends React.Component {
     this.onInputChange = this.onInputChange.bind(this);
     this.onSaveButtonClick = this.onSaveButtonClick.bind(this);
     this.isFormFilled = this.isFormFilled.bind(this);
+    this.renderSavedCards = this.renderSavedCards.bind(this);
 
     this.state = {
       cardName: '', // 'string'
@@ -90,8 +91,16 @@ class App extends React.Component {
     this.setState({ isSaveButtonDisabled: !statesBool });
   }
 
+  renderSavedCards = () => {
+    console.log('hi');
+    const { savedCards } = this.state;
+    return savedCards.map((item, i) => {
+     return <Card key={i} { ...item } />
+    });
+  }
+
   render() {
-    const { cardName } = this.state;
+    const { cardName, savedCards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
@@ -102,6 +111,7 @@ class App extends React.Component {
         />
         { cardName ? <Card { ...this.state } /> : null}
         <h1>Seu baralho:</h1>
+        { savedCards.length > 0 ? this.renderSavedCards() : undefined }
       </div>
     );
   }
