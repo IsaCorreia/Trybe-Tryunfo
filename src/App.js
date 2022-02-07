@@ -27,8 +27,9 @@ class App extends React.Component {
   }
 
   onInputChange = (event) => {
-    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-    this.setState({ [event.target.id]: value }, () => {
+    const { target } = event;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    this.setState({ [target.id]: value }, () => {
       this.isFormFilled();
     });
   };
@@ -99,7 +100,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { cardName, savedCards } = this.state;
+    const { savedCards } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
