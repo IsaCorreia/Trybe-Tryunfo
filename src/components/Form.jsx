@@ -1,9 +1,26 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import Input from './Input';
+import React from 'react';
 import Checkbox from './Checkbox';
+import Input from './Input';
 
 class Form extends React.Component {
+  constructor() {
+    super();
+
+    this.rendersCheckbox = this.rendersCheckbox.bind(this);
+  }
+
+  rendersCheckbox = () => {
+    const { cardTrunfo, onInputChange } = this.props;
+    return (<Checkbox
+      testid="trunfo-input"
+      id="cardTrunfo"
+      type="checkbox"
+      checked={ cardTrunfo }
+      onChange={ onInputChange }
+    />);
+  };
+
   render() {
     const {
       cardName, // 'string'
@@ -13,7 +30,6 @@ class Form extends React.Component {
       cardAttr3, // 'string'
       cardImage, // 'string'
       cardRare, // 'string'
-      cardTrunfo, // 'boolean'
       hasTrunfo, // 'boolean'
       isSaveButtonDisabled, // boolean
       onInputChange,
@@ -87,13 +103,7 @@ class Form extends React.Component {
         </label>
 
         { !hasTrunfo
-          ? <Checkbox
-              testid="trunfo-input"
-              id="cardTrunfo"
-              type="checkbox"
-              checked={ cardTrunfo }
-              onChange={ onInputChange }
-            />
+          ? this.rendersCheckbox()
           : <p>Você já tem um Super Trunfo em seu baralho</p>}
 
         <button
