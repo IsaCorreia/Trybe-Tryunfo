@@ -27,8 +27,9 @@ class App extends React.Component {
   }
 
   onInputChange = (event) => {
-    this.setState({ [event.target.id]: event.target.value });
-    this.isFormFilled();
+    this.setState({ [event.target.id]: event.target.value }, () => {
+      this.isFormFilled();
+    });
   };
 
   onSaveButtonClick = () => {
@@ -82,8 +83,8 @@ class App extends React.Component {
       cardName: cardName.length > 0 || false,
       cardDescription: cardDescription.length > 0 || false,
       cardAttr1: (cardAttr1 >= 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
-      cardAttr3: (cardAttr3 >= 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
-      cardAttr2: (cardAttr2 >= 0 && cardAttr1 <= MAX_NUMBER_FOR_ATTR) || false,
+      cardAttr2: (cardAttr2 >= 0 && cardAttr2 <= MAX_NUMBER_FOR_ATTR) || false,
+      cardAttr3: (cardAttr3 >= 0 && cardAttr3 <= MAX_NUMBER_FOR_ATTR) || false,
       cardAttrSum: cardAttrSumValue <= MAX_NUMBER_FOR_ATTR_SUM || false,
       cardImage: cardImage.length > 0 || false,
     };
@@ -106,7 +107,7 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
           onSaveButtonClick={ this.onSaveButtonClick }
         />
-        { cardName ? <Card { ...this.state } /> : null}
+        <Card { ...this.state } />
         <h1>Seu baralho:</h1>
         { savedCards.length > 0 ? this.renderSavedCards() : undefined }
       </div>
