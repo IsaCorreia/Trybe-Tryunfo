@@ -14,7 +14,7 @@ class Input extends React.Component {
             id={ id }
             data-testid={ testid }
             onChange={ func }
-            defaultValue={ value }
+            value={ value }
           />
         </label>
       </div>

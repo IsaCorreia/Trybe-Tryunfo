@@ -76,7 +76,7 @@ class Form extends React.Component {
             id="cardRare"
             data-testid="rare-input"
             type="select"
-            defaultValue={ cardRare }
+            value={ cardRare }
             onChange={ onInputChange }
           >
             <option>normal</option>

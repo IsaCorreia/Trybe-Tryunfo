@@ -14,9 +14,9 @@ class App extends React.Component {
     this.state = {
       cardName: '', // 'string'
       cardDescription: '', // 'string'
-      cardAttr1: '', // 'string'
-      cardAttr2: '', // 'string'
-      cardAttr3: '', // 'string'
+      cardAttr1: '0', // 'string'
+      cardAttr2: '0', // 'string'
+      cardAttr3: '0', // 'string'
       cardImage: '', // 'string'
       cardRare: 'normal', // 'string'
       cardTrunfo: false, // 'boolean'
@@ -44,8 +44,6 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
-      isSaveButtonDisabled,
       savedCards,
     } = this.state;
 
@@ -58,14 +56,20 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
-      // hasTrunfo,
-      isSaveButtonDisabled,
     };
     savedCards.push(newCard);
 
     // Salva nova varta no estado
     this.setState({
       savedCards,
+      cardName: '', // 'string'
+      cardDescription: '', // 'string'
+      cardAttr1: '0', // 'string'
+      cardAttr2: '0', // 'string'
+      cardAttr3: '0', // 'string'
+      cardImage: '', // 'string'
+      cardRare: 'normal', // 'string'
+      cardTrunfo: false, // 'boolean'
     });
   };
 
